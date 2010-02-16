@@ -215,6 +215,17 @@
 
                 $('body').append('<div id="themeOverlay"/><div id="themeLoaded" style="display: none;"/>');
                 $('body').css({ height: '100%' });
+                $('head').append('<link rel="stylesheet" href="' + path + theme + '/theme.css" type="text/css" title="' +
+                                 theme + '" media="screen"/>');
+                $('#themeOverlay').css({
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        zIndex: 1000,
+                        background: '#FFF url(' + path + 'common/loading.gif) no-repeat center'
+                });
 
                 function activate(theme) {
                         $('link[rel*=style][title]').each(function() {
@@ -230,37 +241,6 @@
                          });
                 }
 
-                function themeActivated() {
-                        projectionMode = $('#themeLoaded').css('font-family') == 'Projection';
-                        if (projectionMode) {
-                                $('.slide').hide();
-                                $('.navigation, #currentSlide, #slide' + currentSlide).show();
-                        } else {
-                                $('.slide').show();
-                                $('.navigation, #currentSlide').hide();
-                                incrementals[currentSlide - 1].stop(true).css({opacity: 1, visibility: 'visible'});
-                        }
-                        rescale();
-                }
-
-                if ($('link[rel*=style][title=' + theme + ']').size() != 0) {
-                        activate(theme);
-                        themeActivated();
-                        return;
-                }
-
-                $('head').append('<link rel="stylesheet" href="' + path + theme + '/theme.css" type="text/css" title="' +
-                                 theme + '" media="screen"/>');
-                $('#themeOverlay').css({
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        zIndex: 1000,
-                        background: '#FFF url(' + path + 'common/loading.gif) no-repeat center'
-                });
-
                 var oldTheme = currentTheme, tries = 0;
                 activate(theme);
 
@@ -275,7 +255,16 @@
                                                 activate(oldTheme);
                                 }
 
-                                themeActivated();
+                                projectionMode = element.css('font-family') == 'Projection';
+                                if (projectionMode) {
+                                        $('.slide').hide();
+                                        $('.navigation, #currentSlide, #slide' + currentSlide).show();
+                                } else {
+                                        $('.slide').show();
+                                        $('.navigation, #currentSlide').hide();
+                                        incrementals[currentSlide - 1].stop(true).css({opacity: 1, visibility: 'visible'});
+                                }
+                                rescale();
 
                                 $('#themeLoaded, #themeOverlay').fadeOut(themeDuration, function() {
                                         $(this).remove();
@@ -302,6 +291,8 @@
                 var theme, match;
                 if (match = location.search.match(/(\?|&)theme=([\w-_]+)/))
                         theme = match[2];
+                if (!theme)
+                        theme = $('link[rel*=style][title]:eq(0)').attr('title');
                 setTheme(theme);
         }
 
@@ -372,13 +363,10 @@
                         list.options[list.length] = new Option((i + 1) + ' : ' + $('h1,h2,h3,h4,h5,h6', this).first().text(), i + 1);
                 });
 
+                themes = themes.sort();
                 list = $('#themeList').get(0);
                 for (i in themes)
                         list.options[list.length] = new Option('Theme ' + themes[i], themes[i]);
-                $('link[rel*=style][title]').each(function() {
-                        if ($.inArray(this.title, themes) < 0)
-                                list.options[list.length] = new Option('Theme ' + this.title, this.title);
-                });
         }
 
         function toggleTransitions() {
