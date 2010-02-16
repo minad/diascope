@@ -1,0 +1,44 @@
+@import ../common/common.sass
+
++projection-theme
++link-color(#C93)
+
+body
+  background: #FFF url(background.png) fixed
+  color: #333
+  font-family: Tahoma, Arial, Helvetica, sans-serif
+
+h1, h2, h3, h4, h5, h6
+  text-shadow: 0.1em 0.1em 0.1em #999
+
+.slide
+  padding-top: 4em
+  padding-left: 10%
+  width: 80%
+  height: 75%
+  & > h1
+    position: absolute
+    text-shadow: 0.1em 0.1em 0.1em #333
+    margin-top: -2.25em
+    color: #FFF
+  .current
+    color: #B02
+
+#header
+  background: transparent url(header.png) bottom
+  height: 6em
+
+#footer
+  background: #999 url(footer.png) top
+  color: #FFF
+
+#currentSlide
+  color: #FFF
+
+#slide1 > h1
+  font-size: 2em
+  position: static
+  margin-left: 0
+  margin-top: 1em
+  color: #333
+  text-shadow: 0.1em 0.1em 0.1em #999

@@ -1,0 +1,29 @@
+@import ../common/common.sass
+
++projection-theme
++link-color(#F93)
+
+body
+  background: #000
+  color: #FFF
+  font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif
+
+.slide
+  left: 10%
+  width: 80%
+  height: 70%
+  top: 20%
+  h1, h2, h3, h4, h5, h6
+    margin-top: -1.5em
+    display: inline
+    position: absolute
+    border-bottom: 0.1em solid #F00
+    white-space: nowrap
+    padding-bottom: 0.1em
+  .current
+    color: #FF0
+
+#slide1 > h1
+  font-size: 2em
+  margin-top: 1em
+  padding-bottom: 0.2em

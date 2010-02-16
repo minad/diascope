@@ -1,0 +1,40 @@
+=absolute(!z)
+  z-index = !z
+  position: absolute
+
+=topleft(!z)
+  +absolute(!z)
+  top: 0
+  left: 0
+
+=topright(!z)
+  +absolute(!z)
+  top: 0
+  right: 0
+
+=bottomleft(!z)
+  +absolute(!z)
+  bottom: 0
+  left: 0
+
+=bottomright(!z)
+  +absolute(!z)
+  bottom: 0
+  right: 0
+
+=top(!z)
+  +topleft(!z)
+  :width 100%
+
+=bottom(!z)
+  +bottomleft(!z)
+  :width 100%
+
+=theme-loaded(!mode)
+  #themeLoaded
+    width: 42px
+    font-family = !mode
+
+=link-color(!color)
+  a, a:link, a:hover, a:active, a:visited
+    color = !color

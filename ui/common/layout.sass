@@ -1,0 +1,102 @@
+=basic-formatting
+  strong
+    font-weight: bold
+  em, i
+    font-style: italic
+  u
+    text-decoration: underline
+
+=font-sizes
+  font-size: 2.25em
+  line-height: 1em
+  h1, h2
+    font-size: 1.5em
+  h1, h2, h3, h4, h5, h6
+    font-weight: bold
+    margin-bottom: 1em
+  .fs50
+    font-size: 50%
+  .fs66
+    font-size: 66%
+  .fs75
+    font-size: 75%
+  .fs90
+    font-size: 90%
+
+=lists
+  li
+    margin-bottom: 0.5em
+  ul
+    margin-left: 1em
+    list-style-type: disc
+    ul
+      margin-left: 2em
+      font-size: 90%
+      list-style-type: square
+      ul
+        list-style-type: circle
+  ol
+    margin-left: 1em
+    list-style-type: decimal
+    ol
+      margin-left: 2em
+      font-size: 90%
+      list-style-type: upper-roman
+      ol
+        list-style-type: lower-alpha
+
+=links
+  a, a:link, a:hover, a:active, a:visited
+    text-decoration: none
+  a[href^=http]:after
+    content: ' \274F'
+    font-size: smaller
+
+=outline-layout
+  .hide, #header, #footer, .topleft, .topright, .bottomleft, .bottomright
+    display: none
+
+=slideshow-layout
+  body
+    height: 100%
+    overflow: hidden
+  .slide
+    +topleft(12)
+    +font-sizes
+    +links
+    +lists
+    +basic-formatting
+    width: 100%
+    height: 100%
+  #header
+    +top(10)
+  #footer
+    +bottom(10)
+    h1
+      float: left
+      margin-left: 1em
+      font-size: 1.2em
+      line-height: 2em
+      font-weight: bold
+    h2
+      float: right
+      margin-right: 1em
+      font-size: 1.2em
+      font-weight: bold
+      line-height: 2em
+  .notes, .handout, .hide
+    display: none
+  .layout
+    & > .topleft
+      +topleft(11)
+    & > .topright
+      +topright(11)
+    & > .bottomleft
+      +bottomleft(11)
+    & > .bottomright
+      +bottomright(11)
+  #currentSlide
+    +bottomleft(10)
+    width: 10%
+    line-height: 2.4em
+    left: 45%
