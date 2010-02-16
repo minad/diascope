@@ -410,8 +410,8 @@
                 initControls();
 
                 $(document).keyup(keyup).click(function(event) {
-                       var n = event.target.nodeName;
-                       return event.button != 0 || n == 'A' || n == 'SELECT' || n == 'BUTTON' || n == 'OPTION' ? true : next();
+                       var n = event.target.nodeName.toLowerCase();
+                       return event.button != 0 || n == 'a' || n == 'select' || n == 'button' || n == 'option' ? true : next();
                 });
                 $(window).resize(rescale);
                 checkHash();
