@@ -5,10 +5,10 @@ S5 is a slide show format based entirely on XHTML, CSS, and JavaScript. With one
 
 The original S5 was developed by [Eric Meyer](http://meyerweb.com/eric/tools/s5/).
 
-S5-suckless
-===========
+Diascope
+========
 
-S5-suckless is a a mostly-S5-compatible implementation which sucks less. It
+Diascope is a a mostly-S5-compatible implementation which sucks less. It
 is inspired by [s5-reloaded](http://www.netzgesta.de/S5/).
 
 It uses jQuery to handle the javascript peaks and pitfalls. The javascript is therefore
