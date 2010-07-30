@@ -1,6 +1,6 @@
-SASS_FILES=$(wildcard ui/*/theme.sass)
-CSS_FILES=$(SASS_FILES:sass=css)
-COMMON_SASS_FILES=$(wildcard ui/common/*.sass)
+SCSS_FILES=$(wildcard ui/*/theme.scss)
+CSS_FILES=$(SCSS_FILES:scss=css)
+COMMON_SCSS_FILES=$(wildcard ui/common/*.scss)
 
 
 all: $(CSS_FILES)
@@ -8,5 +8,5 @@ all: $(CSS_FILES)
 clean:
 	rm -f $(CSS_FILES)
 
-ui/%/theme.css: ui/%/theme.sass $(COMMON_SASS_FILES)
+ui/%/theme.css: ui/%/theme.scss $(COMMON_SCSS_FILES)
 	sass -C -t compressed $< > $@

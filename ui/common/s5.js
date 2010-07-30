@@ -248,6 +248,7 @@
                         var element = $('#themeLoaded');
                         if (element.size() == 0)
                                 return;
+                        // 42px width means theme is loaded
                         if (element.css('width') == '42px' || tries >= 50) {
                                 if (tries >= 50) {
                                         $('link[rel*=style][title=' + theme + ']').remove();
@@ -255,7 +256,8 @@
                                                 activate(oldTheme);
                                 }
 
-                                projectionMode = element.css('font-family') == 'Projection';
+                                // 42px height means projection mode
+				projectionMode = element.css('height') == '42px';
                                 if (projectionMode) {
                                         $('.slide').hide();
                                         $('.navigation, #currentSlide, #slide' + currentSlide).show();
