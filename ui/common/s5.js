@@ -389,7 +389,7 @@
         }
 
         function init() {
-                path = $('script[src*=s5.js]').attr('src');
+                path = $('script[src*="s5.js"]').attr('src');
                 path = path.substr(0, path.length - 'common/s5.js'.length);
                 transitions = $('meta[name=transitions]').attr('content') == 'yes';
                 fadeDuration = parseInt($('meta[name=fadeDuration]').attr('content') || fadeDuration);
